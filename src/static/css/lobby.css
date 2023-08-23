@@ -1,0 +1,10 @@
+.player-list{
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
+
+.avatar-name{
+    margin-top: -7rem;
+}
