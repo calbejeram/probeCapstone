@@ -1,0 +1,21 @@
+.create-container {
+    height: 80vh;
+}
+.create-name {
+    outline: 0;
+    border: 0;
+    border-bottom: 4px solid black;
+}
+
+.create-name::placeholder{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.create-name {
+    text-align: center;
+    height: 40px;
+    font-size: 2rem;
+    font-weight: bold;
+}
