@@ -8,3 +8,25 @@
 .avatar-name{
     margin-top: -7rem;
 } */
+
+/* CHAT BOX SECTION */
+.chatbox-container {
+    height: 89%;
+    border: 4px solid #284265;
+}
+
+.message-box {
+    height: 85%;
+}
+
+.username {
+    font-size: 12px;
+}
+
+.time {
+    font-size: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}

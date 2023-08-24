@@ -24,24 +24,24 @@ const Lobby = () => {
                 <button className='btn th-bg-main w-25 text-center text-white fs-3 fw-bold mt-3'><i class="bi bi-play-fill me-2"></i>Start</button>
             </div>
             <div className='d-flex flex-column ms-4'>
-                <div className="chatbox-container border border-4 rounded-3" style={{height: '89%'}}>
-                    <div className="message-box border p-3" style={{height: '85%'}} >
+                <div className="chatbox-container rounded-3">
+                    <div className="message-box border p-3">
                         {/* Sample UI for Messages */}
                         <div className="player1 d-flex align-items-center my-2">
                             <img src={unknown1} height={50} alt="Player1"/>
                             <div className='ms-2'>
-                                <p className="m-0" style={{fontSize: '12px'}}>Ciel Palacio</p>
+                                <p className="username m-0">Ciel Palacio</p>
                                 <p className='fw-bold m-0'>Kamusta Project niyo guys?</p>
-                                <p className='m-0'style={{fontSize: '10px'}}>Sent 2 minutes ago</p>
+                                <p className='time m-0'>Sent 2 minutes ago</p>
                             </div>
                         </div>
                         {/* Sample UI for self reply */}
                         <div className="player1 d-flex flex-row-reverse align-items-center my-2">
                             <img src={unknown2} height={50} alt="Player1"/>
                             <div className='me-2'>
-                                <p className="m-0 text-end" style={{fontSize: '12px'}}>You</p>
+                                <p className="username m-0 text-end">You</p>
                                 <p className='fw-bold m-0'>Ayos naman po kamahalan</p>
-                                <p className='m-0 text-end'style={{fontSize: '10px'}}>Sent 1 minute ago</p>
+                                <p className='time m-0 text-end'>Sent 1 minute ago</p>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ import Avatar6 from '../static/images/avatar_set/Asset 11.svg';
 import Avatar7 from '../static/images/avatar_set/Asset 12.svg';
 import Avatar8 from '../static/images/avatar_set/Asset 13.svg';
 
-const Avatars = (props) => {
+const Avatars = () => {
     
     const avatars = [
         {
