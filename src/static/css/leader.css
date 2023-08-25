@@ -1,0 +1,21 @@
+.table-leader {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.header-text {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.leader-back {
+    background-color: #284265;
+    padding-top: 50px;
+    height: 650px;
+    text-shadow: black 5px;
+}
+
+td {
+    text-align: center;
+}
