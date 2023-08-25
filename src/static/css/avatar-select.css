@@ -19,3 +19,7 @@
     font-size: 2rem;
     font-weight: bold;
 }
+
+.selected-character{
+    border: 5px solid var(--th-main);
+}

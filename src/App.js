@@ -11,7 +11,6 @@ import '../src/static/css/style_config.css';
 
 import Lobby from './pages/Lobby';
 import UserDashboard from './pages/UserDashboard';
-import CreateAvatar from "./pages/CreateAvatar";
 
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
       <Routes>
         <Route path="/lobby" element={<Lobby />} />
         <Route path="/user" element={<UserDashboard />} />
-        <Route path="/create" element={<CreateAvatar />} />
       </Routes>
    </>
   );

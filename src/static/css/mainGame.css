@@ -1,0 +1,61 @@
+.main-container{
+    background-color: rgba(40, 66, 101, 0.80);
+    height: 100vh;
+    max-height: 750px;
+}
+
+h1,h5{
+    font-family: var(--th-f-one);
+}
+
+.choices-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
+
+.choice{
+    background-color: #BC4343;
+    color: white;
+    font-size: 3rem;
+    padding: .5rem .5rem;
+    height: 130px;
+}
+
+.choice:nth-child(2){
+    background-color: #5D5AD9;
+}
+
+.choice:nth-child(3){
+    background-color: #E59722;
+}
+
+.choice:nth-child(4){
+    background-color: #419432;
+}
+
+.choice span{
+    font-family: var(--th-f-one);
+}
+
+.selected-choice{
+    border: 2px solid white;
+}
+
+.game-timer{
+    margin-top: 10rem;
+    font-size: 15rem;
+    color: #818181;
+    position: absolute;
+    z-index: -1;
+}
+
+
+.incorrect-answer{
+    background-color: #787878!important;
+    color: #b5b5b5!important;
+}
+
+.hide-element{
+    display: none!important;
+}

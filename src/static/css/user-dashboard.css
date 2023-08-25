@@ -1,16 +1,8 @@
 .sidebar {
-    position: fixed;
     width: 250px;
     height: 100vh;
 }
 
-.quizzes-box {
-    background-color: lightgray;
-    width: 150px;
-    height: 150px;
-    border: 1px solid black;
-    margin: 1rem 2rem;
-}
 
 /* Main Container */
 .main-container {

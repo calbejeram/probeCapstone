@@ -1,13 +1,12 @@
-/* .player-list{
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(2,1fr);
+.player-list{
+    width: 800px;
+    height: 350px;
 }
 
-.avatar-name{
+/* .avatar-name{
     margin-top: -7rem;
-} */
+}  */
+
 
 /* CHAT BOX SECTION */
 .chatbox-container {

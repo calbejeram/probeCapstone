@@ -1,51 +1,41 @@
-import React from 'react';
-import '../static/css/avatar-select.css';
-import ProbeHeader from '../components/ProbeHeader';
-import Avatar1 from '../static/images/avatar_set/Asset 5.svg';
-import Avatar2 from '../static/images/avatar_set/Asset 6.svg';
-import Avatar3 from '../static/images/avatar_set/Asset 7.svg';
-import Avatar4 from '../static/images/avatar_set/Asset 9.svg';
-import Avatar5 from '../static/images/avatar_set/Asset 10.svg';
-import Avatar6 from '../static/images/avatar_set/Asset 11.svg';
-import Avatar7 from '../static/images/avatar_set/Asset 12.svg';
-import Avatar8 from '../static/images/avatar_set/Asset 13.svg';
+// import React from 'react';
+// import io from 'socket.io-client';
+// import ProbeHeader from '../components/ProbeHeader';
+// import avatars from '../instance/AvatarData';
 
-const CreateAvatar = () => {
-    const avatars = [
-        Avatar1,
-        Avatar2,
-        Avatar3,
-        Avatar4,
-        Avatar5,
-        Avatar6,
-        Avatar7,
-        Avatar8,
-    ];
 
-    const avatarSelect = avatars.map(avatar => {
-        return (
-            <div role='button' className='col col-lg-3 m-0 p-0 d-flex justify-content-center'>
-                <img width={80} src={avatar} alt="Avatar Photo" />
-            </div>
-        )
-    })
-  return (
-    <>
-        <div>
-            <ProbeHeader/>
-            <div className="d-flex align-items-center justify-content-center">
-                <div className="create-container d-flex align-items-center justify-content-center">
-                    <form action="" method='' className='d-flex flex-column align-items-center justify-content-center'>
-                        <input type="text" className="create-name w-50 mb-5" name='name' id='name' placeholder='Enter Name' />
-                        <div className="row">
-                            {avatarSelect}
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </>
-  )
-}
+// import '../static/css/avatar-select.css';
 
-export default CreateAvatar;
+// const CreateAvatar = () => {
+    
+//     const socket = io('http://localhost:5000');
+//     let player_avatar = null;
+
+//     const selectAvatar = (e) =>{
+//         const avatar_choices = document.querySelectorAll('.avatar-choice');
+//         avatar_choices.forEach(choice => {
+//             if (choice.id === e.target.id){
+//                 player_avatar = e.target.id;
+//                 choice.classList.add('selected-character');
+//             }else{
+//                 choice.classList.remove('selected-character');
+//             }
+//         })
+//     }
+
+//     const joinRoom = (e) =>{
+//         let user_data = JSON.parse(sessionStorage.getItem('user'))
+//         user_data.avatar = player_avatar
+//         socket.emit('join', user_data)
+//         window.location = window.origin = "/lobby"
+//     }
+
+
+//   return (
+//         <div>
+//             <ProbeHeader/>
+//         </div>
+//   )
+// }
+
+// export default CreateAvatar;
