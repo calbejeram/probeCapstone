@@ -11,6 +11,7 @@ import '../src/static/css/style_config.css';
 
 import Lobby from './pages/Lobby';
 import UserDashboard from './pages/UserDashboard';
+import Register from "./pages/Register";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/lobby" element={<Lobby />} />
         <Route path="/user" element={<UserDashboard />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
    </>
   );

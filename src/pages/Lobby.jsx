@@ -128,7 +128,8 @@ return (
                             <button className='btn btn-light ms-2 ' type='submit'>Send</button>
                         </div>
                     </div>
-                    <button onClick={sendMessage} className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
+                    {/* sendMessage */}
+                    <button onClick="" className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
                         <img width="35" height="35" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/clone-figure--v3.png" alt="clone-figure--v3" className='me-2'/>
                         Room Code
                     </button>

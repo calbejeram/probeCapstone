@@ -1,0 +1,21 @@
+.register-form {
+    height: 82.3vh;
+    background-color: #8F9DAF;
+}
+
+.register-input {
+    outline: 0;
+    border: 0;
+    border-bottom: 4px solid rgb(215, 210, 210);
+    text-align: center;
+    font-weight: bold;
+    background-color: #8F9DAF;
+    font-size: 2rem;
+    padding: 12px 0;
+}
+
+.register-input::placeholder {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
