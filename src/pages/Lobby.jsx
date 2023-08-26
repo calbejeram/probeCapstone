@@ -15,6 +15,7 @@ const Lobby = () => {
 
     const [select_avatar,setShowAvatars] = useState(true)
     const [room_info,setRoomInfo] = useState([])
+    const [player_count,setPlayerCount] = useState(0)
 
     let player_avatar = null;
 
@@ -40,9 +41,13 @@ const Lobby = () => {
     useEffect(()=>{
         socket.on('getRoomInfo', data =>{
             setShowAvatars(false);
-            console.log(data);
             setRoomInfo(data);
+            setPlayerCount(data.players.length);
         })
+
+        socket.on('recieveRoomMessage', data =>{
+            console.log(data);
+        });
 
     })
 
@@ -76,7 +81,7 @@ return (
             <div className='container d-flex flex-row justify-content-center mt-5'>
                 <div className='d-flex flex-column align-items-center justify-content-center'>
                     <div className='border player-container p-3 rounded-3'>
-                        <h3 className='w-100 text-end'>Players : 0 / 8</h3>
+                        <h3 className='w-100 text-end'>Players : {player_count} / 8</h3>
                         <div className='player-list p-3 d-flex align-items-center justify-content-center mt-5'>
                             <div className="row">
                                {
@@ -85,7 +90,7 @@ return (
                                             <div className="col col-lg-3 mt-3">
                                                 <div className='d-flex flex-column align-items-center justify-content-center'>
                                                     <img height={100} src={avatars[room_info.avatars[Number(index)]]} alt="avatar-img" />
-                                                    <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player}</div>
+                                                    <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player.split(' ')[0]}</div>
                                                 </div>
                                             </div>
                                         )
@@ -123,7 +128,7 @@ return (
                             <button className='btn btn-light ms-2 ' type='submit'>Send</button>
                         </div>
                     </div>
-                    <button type='submit' className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
+                    <button onClick={sendMessage} className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
                         <img width="35" height="35" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/clone-figure--v3.png" alt="clone-figure--v3" className='me-2'/>
                         Room Code
                     </button>

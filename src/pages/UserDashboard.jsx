@@ -17,6 +17,14 @@ const UserDashboard = () => {
         socket.emit('host', {value: player_name})
     };
 
+    const joinRoom = () =>{
+        let name_value = document.querySelector('.dashboard-username').innerText;
+        let join_code = document.querySelector('.join-code').value;
+    
+        sessionStorage.setItem('user', JSON.stringify({code: join_code, name: name_value}))
+        window.location = window.origin + "/lobby"
+    };
+
     useEffect(()=>{
 
         socket.on('initRoom', data =>{
@@ -59,8 +67,8 @@ const UserDashboard = () => {
             </div>
             <div className="container d-flex flex-column align-items-center justify-content-start border p-0">
                 <div className="container th-bg-main d-flex flex-row justify-content-end column-gap-3 p-3">
-                    <input type="text" className='form-control w-25' placeholder='Enter Code'/>
-                    <button className='btn btn-light d-flex align-items-center'>
+                    <input type="text" className='join-code form-control w-25' placeholder='Enter Code'/>
+                    <button onClick={joinRoom} className='btn btn-light d-flex align-items-center'>
                         <i className="code-arrow bi bi-arrow-right-short"></i>
                     </button>
                 </div>
