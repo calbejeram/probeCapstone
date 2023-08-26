@@ -22,7 +22,13 @@
     background: var(--th-secondary)!important;
 }
 
-.fade-bottom{ 
+.fade-bottom-r{ 
+    animation: fade-bottom-r 1.2s both;
+    -webkit-animation: fade-bottom-r 1.2s both;
+    -o-animation: fade-bottom-r 1.2s both;
+ }
+
+ .fade-bottom{ 
     animation: fade-bottom 1.2s both;
     -webkit-animation: fade-bottom 1.2s both;
     -o-animation: fade-bottom 1.2s both;
@@ -39,6 +45,41 @@
     -webkit-animation: fade-right 1.2s both;
     -o-animation: fade-right 1.2s both;
  }
+
+
+ @keyframes fade-bottom-r {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
+
+@-webkit-keyframes fade-bottom-r{
+    0% {
+        -webkit-transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fade-bottom-r{
+    0% {
+        -o-transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -o-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 
 @keyframes fade-bottom {
