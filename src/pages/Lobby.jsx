@@ -16,6 +16,7 @@ const Lobby = () => {
     const [select_avatar,setShowAvatars] = useState(true)
     const [room_info,setRoomInfo] = useState([])
     const [player_count,setPlayerCount] = useState(0)
+    const [isAdmin,setIsAdmin] = useState(false)
 
     let player_avatar = null;
 
@@ -43,6 +44,11 @@ const Lobby = () => {
             setShowAvatars(false);
             setRoomInfo(data);
             setPlayerCount(data.players.length);
+
+            let user_data = JSON.parse(sessionStorage.getItem('user'))
+            if(user_data.name === data.admin){
+                setIsAdmin(true)
+            }
         })
 
         socket.on('recieveRoomMessage', data =>{
@@ -99,11 +105,16 @@ return (
                             </div>
                         </div>
                     </div>
-                    <button className='btn th-bg-main w-25 text-center text-white fs-3 fw-bold mt-3'><i className="bi bi-play-fill me-2"></i>Start</button>
+                    {
+                        isAdmin ?
+                            <button className='btn th-bg-main w-25 text-center text-white fs-3 fw-bold mt-3'><i className="bi bi-play-fill me-2"></i>Start</button>
+                        :
+                            false
+                    }
                 </div>
                 <div className='d-flex flex-column ms-4'>
-                    <div className="chatbox-container rounded-3">
-                        <div className="message-box border p-3">
+                    <div className="chatbox-container rounded-3 d-flex flex-column">
+                        <div className="message-box border p-3 h-100">
                             {/* Sample UI for Messages */}
                             <div className="player1 d-flex align-items-center my-2">
                                 <img src={unknown1} height={50} alt="Player1"/>
@@ -123,7 +134,7 @@ return (
                                 </div>
                             </div>
                         </div>
-                        <div className="message-container d-flex flex-row th-bg-main p-3">
+                        <div className="message-container d-flex flex-row th-bg-main p-2">
                             <input type="text" placeholder='Enter Message' className='form-control' />
                             <button className='btn btn-light ms-2 ' type='submit'>Send</button>
                         </div>

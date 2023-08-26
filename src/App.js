@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/lobby" element={<Lobby />} />
         <Route path="/user" element={<UserDashboard />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/guest" element={<Register />} />
       </Routes>
    </>
   );
