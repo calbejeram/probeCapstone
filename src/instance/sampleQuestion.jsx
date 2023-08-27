@@ -29,6 +29,11 @@ const sample_questions =
             question: "What keyword is used to check whether a given property is valid or not?",
             choices: ['in', 'is in', 'exists', 'lies'],
             answer: 'in'
+        },
+        {
+            question: "",
+            choices: [],
+            answer: ''
         }
 
     ]

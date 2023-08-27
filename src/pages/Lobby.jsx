@@ -9,14 +9,16 @@ import avatars from '../instance/AvatarData';
 import '../static/css/lobby.css';
 import '../static/css/avatar-select.css';
 
+const socket = io('http://localhost:5000')
 
 const Lobby = () => {
-    const socket = io('http://localhost:5000')
 
     const [select_avatar,setShowAvatars] = useState(true)
+    const [user_data,setUserData] = useState(JSON.parse(sessionStorage.getItem('user')))
     const [room_info,setRoomInfo] = useState([])
     const [player_count,setPlayerCount] = useState(0)
     const [isAdmin,setIsAdmin] = useState(false)
+    const [room_message, setRoomMessage] = useState([])
 
     let player_avatar = null;
 
@@ -32,9 +34,18 @@ const Lobby = () => {
             }
         })
     }
-    
+
+    const sendMessage = () =>{
+        let message = document.querySelector('.lobby-message');
+        let date = new Date()
+        socket.emit('lobbyMessage', {code: user_data.code, value: { name: user_data.name, avatar: Number(player_avatar), message: message, time: date.toLocaleString()}});
+    };
+
+    const startGame = () =>{
+        socket.emit('initGame', {code: user_data.code});
+    }
+
     const joinRoom = (e) =>{
-        let user_data = JSON.parse(sessionStorage.getItem('user'))
         user_data.avatar = player_avatar
         socket.emit('join', user_data)
     }
@@ -45,15 +56,19 @@ const Lobby = () => {
             setRoomInfo(data);
             setPlayerCount(data.players.length);
 
-            let user_data = JSON.parse(sessionStorage.getItem('user'))
             if(user_data.name === data.admin){
                 setIsAdmin(true)
             }
         })
 
         socket.on('recieveRoomMessage', data =>{
-            console.log(data);
+            console.log(data)
+            setRoomMessage(data)
         });
+
+        socket.on('startGame', data =>{
+            window.location = window.origin + '/game'
+        })
 
     })
 
@@ -95,8 +110,8 @@ return (
                                         return(
                                             <div className="col col-lg-3 mt-3">
                                                 <div className='d-flex flex-column align-items-center justify-content-center'>
-                                                    <img height={100} src={avatars[room_info.avatars[Number(index)]]} alt="avatar-img" />
-                                                    <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player.split(' ')[0]}</div>
+                                                    <img height={100} src={avatars[Number(player.avatar)]} alt="avatar-img" />
+                                                    <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player.name.split(' ')[0]}</div>
                                                 </div>
                                             </div>
                                         )
@@ -107,40 +122,49 @@ return (
                     </div>
                     {
                         isAdmin ?
-                            <button className='btn th-bg-main w-25 text-center text-white fs-3 fw-bold mt-3'><i className="bi bi-play-fill me-2"></i>Start</button>
+                            <button onClick={startGame} className='btn th-bg-main w-25 text-center text-white fs-3 fw-bold mt-3'><i className="bi bi-play-fill me-2"></i>Start</button>
                         :
                             false
                     }
                 </div>
                 <div className='d-flex flex-column ms-4'>
-                    <div className="chatbox-container rounded-3 d-flex flex-column">
-                        <div className="message-box border p-3 h-100">
-                            {/* Sample UI for Messages */}
-                            <div className="player1 d-flex align-items-center my-2">
-                                <img src={unknown1} height={50} alt="Player1"/>
-                                <div className='ms-2'>
-                                    <p className="username m-0">Ciel Palacio</p>
-                                    <p className='fw-bold m-0'>Kamusta Project niyo guys?</p>
-                                    <p className='time m-0'>Sent 2 minutes ago</p>
-                                </div>
-                            </div>
-                            {/* Sample UI for self reply */}
-                            <div className="player1 d-flex flex-row-reverse align-items-center my-2">
-                                <img src={unknown2} height={50} alt="Player1"/>
-                                <div className='me-2'>
-                                    <p className="username m-0 text-end">You</p>
-                                    <p className='fw-bold m-0'>Ayos naman po kamahalan</p>
-                                    <p className='time m-0 text-end'>Sent 1 minute ago</p>
-                                </div>
-                            </div>
+                    <div className="card border text-center chatbox-container">
+                        <div className="card-header th-bg-main text-white">
+                            Messages
                         </div>
-                        <div className="message-container d-flex flex-row th-bg-main p-2">
-                            <input type="text" placeholder='Enter Message' className='form-control' />
-                            <button className='btn btn-light ms-2 ' type='submit'>Send</button>
+                        <div className="card-body message-box d-flex flex-column-reverse">
+                            {
+                                room_message.map(message =>{
+                                    message.name === user_data.name ?
+
+                                    <div className="player1 border d-flex flex-row-reverse align-items-center my-2">
+                                     <img src={avatars[message.avatar]} height={50} alt="Player1"/>
+                                     <div className='me-2'>
+                                         <p className="username m-0 text-end">You</p>
+                                         <p className='fw-bold m-0'>{message.message}</p>
+                                         <p className='time m-0 text-end'>{message.date}</p>
+                                     </div>
+                                   </div>
+                                    : 
+                                    <div className="player1 d-flex align-items-center my-2">
+                                        <img src={avatars[message.avatar]} height={50} alt="Player1"/>
+                                        <div className='ms-2'>
+                                            <p className="username m-0">{message.name}</p>
+                                            <p className='fw-bold m-0'>{message.message}</p>
+                                            <p className='time m-0'>{message.date}</p>
+                                        </div>
+                                    </div>
+
+                                })
+                            }
+                        </div>
+                        <div className="card-footer th-bg-main d-flex flex-row column-gap-3"> 
+                            <input type="text" placeholder='Enter Message' className='lobby-message form-control'/>
+                            <img role='button' onClick={sendMessage}  width="50" height="50" src="https://img.icons8.com/ios-glyphs/90/FFFFFF/sent.png" alt="sent"/>
                         </div>
                     </div>
                     {/* sendMessage */}
-                    <button onClick="" className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
+                    <button className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
                         <img width="35" height="35" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/clone-figure--v3.png" alt="clone-figure--v3" className='me-2'/>
                         Room Code
                     </button>

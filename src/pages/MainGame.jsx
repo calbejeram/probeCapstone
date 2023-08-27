@@ -1,12 +1,15 @@
 import {React,useState,useEffect} from 'react'
+import io from 'socket.io-client';
 
 import '../static/css/mainGame.css'
 import ProbeHeader from '../components/ProbeHeader';
 import sample_questions from '../instance/sampleQuestion';
 
+const socket = io('http://localhost:5000')
 
 const MainGame = () => {
-    const [counter, setCounter] = useState(10);
+
+    const [counter, setCounter] = useState(15);
     const [correct, setCorrect] = useState(false);
     const [current_question,setCurrentQuestion] = useState(1)
     const [player_score, setPlayerScore] = useState(0);
@@ -20,8 +23,6 @@ const MainGame = () => {
     const question_number = document.querySelector('.question-number');
     const score = document.querySelector('.player-score');
 
-
-    const correct_answer = "Console.log('hello world')";
 
     const choices = document.querySelectorAll('.choice');
     choices.forEach((choice,click_index) => {
@@ -38,8 +39,15 @@ const MainGame = () => {
         }
     })
     
+
+
+
     const showQuestion = () =>{
         active_questions.shift();
+
+        if(active_questions.length === 1){
+           window.location = window.origin = "/leaderBoard";
+        }
 
         score.classList.add('hide-element');
         score.classList.remove('fade-bottom-r');
@@ -57,9 +65,9 @@ const MainGame = () => {
             choice.classList.remove('selected-choice');
 
         })
-
+        
         setCurrentQuestion(current_question + 1)
-        setCounter(10);
+        setCounter(15);
     };
 
     const showScore = () =>{
@@ -83,9 +91,13 @@ const MainGame = () => {
                     choice.classList.add('incorrect-answer');
             }
         })
+        
 
         if(active_questions[0].answer === player_answer){
             setPlayerScore(player_score + 10);
+            let user_data = JSON.parse(sessionStorage.getItem('user'))
+            socket.emit('sendScore', {score: player_score, code: user_data.code, name: user_data.name})
+            
             setCorrect(true);
         }else{
             setCorrect(false);
@@ -95,6 +107,9 @@ const MainGame = () => {
     }
 
     useEffect(() => {
+        let user_data = JSON.parse(sessionStorage.getItem('user'))
+        socket.emit('sendScore', {score: player_score, code: user_data.code, name: user_data.name})
+
         counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
         if(counter === 0){
             showCorrectAnswer()

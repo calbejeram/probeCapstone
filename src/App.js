@@ -13,6 +13,7 @@ import Lobby from './pages/Lobby';
 import UserDashboard from './pages/UserDashboard';
 import Register from "./pages/Register";
 import MainGame from "./pages/MainGame";
+import Leaderboard from "./pages/Leaderboard";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/user" element={<UserDashboard />} />
         <Route path="/guest" element={<Register />} />
         <Route path="/game" element={<MainGame />} />
+        <Route path="/leaderBoard" element={<Leaderboard />} />
       </Routes>
    </>
   );
