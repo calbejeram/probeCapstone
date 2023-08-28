@@ -12,6 +12,11 @@ const Leaderboard = () => {
     let user_data = JSON.parse(sessionStorage.getItem('user'))
     socket.emit('requestScores', {code: user_data.code})
 
+
+    const goBack = () =>{
+        window.location = window.origin + "/user";
+    }
+
     useEffect(()=>{
         socket.on('initScores', data=>{
             console.log(data);
@@ -29,7 +34,7 @@ const Leaderboard = () => {
             
         </div>
         <div className='leader-back'>
-            <div className='container-fluid w-100'>
+            <div className='container-fluid w-100 d-flex flex-column justify-content-between row-gap-5 align-items-center'>
                 <table className='leader-table table table-hover table-white'>
                     <thead className='header-text'>
                         <tr>
@@ -57,6 +62,9 @@ const Leaderboard = () => {
 
                     </tbody>
                 </table>
+                <div onClick={goBack} role='button' className='bg-light w-25 text-center fs-3 rounded-3'>
+                    Go Back
+                </div>
             </div>
         </div>
         

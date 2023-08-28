@@ -41,7 +41,7 @@ const UserDashboard = () => {
                 <div >
                     <div className="logo-container d-flex align-items-center justify-content-center py-5">
                         <img height={100} src={LogoSingle} alt="" />
-                        <h1 className='fw-bold display-4'>Probe</h1>
+                        <h1 className='side-title fw-medium'>Probe</h1>
                     </div>
                     <div className="user-container d-flex align-items-center justify-content-center th-bg-main text-white rounded-3">
                         <i className="user-icon bi bi-person-circle"></i>

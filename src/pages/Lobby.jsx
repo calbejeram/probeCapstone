@@ -22,6 +22,10 @@ const Lobby = () => {
 
     let player_avatar = null;
 
+    const copyCode = (e) =>{
+        navigator.clipboard.writeText(user_data.code)
+        e.target.innerText = 'Code Copied!'
+    }
     
     const selectAvatar = (e) =>{
         const avatar_choices = document.querySelectorAll('.avatar-choice');
@@ -38,7 +42,7 @@ const Lobby = () => {
     const sendMessage = () =>{
         let message = document.querySelector('.lobby-message');
         let date = new Date()
-        socket.emit('lobbyMessage', {code: user_data.code, value: { name: user_data.name, avatar: Number(player_avatar), message: message, time: date.toLocaleString()}});
+        socket.emit('lobbyMessage', {code: user_data.code, value: { name: user_data.name, avatar: Number(player_avatar), message: message.value, time: date.toLocaleString()}});
     };
 
     const startGame = () =>{
@@ -61,8 +65,7 @@ const Lobby = () => {
             }
         })
 
-        socket.on('recieveRoomMessage', data =>{
-            console.log(data)
+        socket.on('receiveRoomMessage', data =>{
             setRoomMessage(data)
         });
 
@@ -132,29 +135,28 @@ return (
                         <div className="card-header th-bg-main text-white">
                             Messages
                         </div>
-                        <div className="card-body message-box d-flex flex-column-reverse">
+                        <div className="card-body message-box d-flex flex-column">
                             {
                                 room_message.map(message =>{
+                                    return(
                                     message.name === user_data.name ?
 
-                                    <div className="player1 border d-flex flex-row-reverse align-items-center my-2">
+                                    <div className="player1 bg-light border rounded-3 d-flex flex-row align-items-center column-gap-2 my-2 px-3 py-1">
                                      <img src={avatars[message.avatar]} height={50} alt="Player1"/>
-                                     <div className='me-2'>
-                                         <p className="username m-0 text-end">You</p>
-                                         <p className='fw-bold m-0'>{message.message}</p>
-                                         <p className='time m-0 text-end'>{message.date}</p>
+                                     <div className='me-2 text-start'>
+                                         <p className="username m-0 text-end"><span className='fw-medium fs-6'>You</span> | <span>{message.time}</span></p>
+                                         <p className='fw-normal m-0'>{message.message}</p>
                                      </div>
                                    </div>
                                     : 
-                                    <div className="player1 d-flex align-items-center my-2">
-                                        <img src={avatars[message.avatar]} height={50} alt="Player1"/>
-                                        <div className='ms-2'>
-                                            <p className="username m-0">{message.name}</p>
-                                            <p className='fw-bold m-0'>{message.message}</p>
-                                            <p className='time m-0'>{message.date}</p>
-                                        </div>
-                                    </div>
-
+                                    <div className="player1 th-bg-main border rounded-3 d-flex flex-row-reverse align-items-center column-gap-2 my-2 px-3 py-1">
+                                     <img src={avatars[message.avatar]} height={50} alt="Player1"/>
+                                     <div className='me-2 text-end'>
+                                         <p className="username m-0 text-end text-white"> <span>{message.time}</span> | <span className='fw-medium fs-6'>{message.name}</span></p>
+                                         <p className='fw-normal m-0 text-white'>{message.message}</p>
+                                     </div>
+                                   </div>
+                                    )
                                 })
                             }
                         </div>
@@ -164,7 +166,7 @@ return (
                         </div>
                     </div>
                     {/* sendMessage */}
-                    <button className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
+                    <button onClick={copyCode} className='btn th-bg-main text-center text-white fs-3 fw-bold rounded-3 mt-3 w-100'>
                         <img width="35" height="35" src="https://img.icons8.com/fluency-systems-regular/48/FFFFFF/clone-figure--v3.png" alt="clone-figure--v3" className='me-2'/>
                         Room Code
                     </button>

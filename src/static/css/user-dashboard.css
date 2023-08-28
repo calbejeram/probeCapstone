@@ -21,3 +21,8 @@
 .menu-list-icon {
     font-size: 1.8rem;
 }
+
+.side-title{
+    font-size: 4rem;
+    color: var(--th-main);
+}
