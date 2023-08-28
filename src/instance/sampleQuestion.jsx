@@ -61,11 +61,34 @@ const sample_questions =
         },
 
         {
-            question: "",
-            choices: [],
-            answer: ''
-        }
+            question: "Which built-in method is used to convert a string to lowercase in JavaScript?",
+            choices: ['toLowerCase()', 'lowerCase()', 'stringToLower()', 'caseLower()'],
+            answer: 'toLowerCase()'
+        },
 
+        {
+            question: "Which of the following is used to add an element to the end of an array in JavaScript?",
+            choices: ['append()', 'push()', 'add()', 'insert()'],
+            answer: 'insert()'
+        },
+
+        {
+            question: "Which method is used to remove the last element from an array in JavaScript?",
+            choices: ['removeLast()', 'pop()', 'deleteLast()', 'shift()'],
+            answer: 'pop()'
+        },
+
+        {
+            question: "What is the purpose of the 'typeof' operator in JavaScript?",
+            choices: ['Determines if a variable is defined', 'Checks if a variable is an array', 'Returns the data type of a variable', 'Compares two variables'],
+            answer: 'Returns the data type of a variable'
+        },
+
+        {
+            question: "What is the purpose of the '===' operator in JavaScript?",
+            choices: ['Assignment', 'Equality comparison', 'Logical AND', 'String concatenation'],
+            answer: 'Equality comparison'
+        }
     ]
 
 
