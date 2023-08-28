@@ -21,7 +21,7 @@ function App() {
    <>
       <Routes>
         <Route path="/lobby" element={<Lobby />} />
-        <Route path="/user" element={<UserDashboard />} />
+        <Route path="/" element={<UserDashboard />} />
         <Route path="/guest" element={<Register />} />
         <Route path="/game" element={<MainGame />} />
         <Route path="/leaderBoard" element={<Leaderboard />} />

@@ -106,21 +106,17 @@ return (
                 <div className='d-flex flex-column align-items-center justify-content-center'>
                     <div className='border player-container p-3 rounded-3'>
                         <h3 className='w-100 text-end'>Players : {player_count} / 8</h3>
-                        <div className='player-list p-3 d-flex align-items-center justify-content-center mt-5'>
-                            <div className="row">
+                        <div className='player-list p-3 d-flex flex-row align-items-center justify-content-start'>
                                {
                                     room_info.players.map((player,index)=>{
-                                        return(
-                                            <div className="col col-lg-3 mt-3">
-                                                <div className='d-flex flex-column align-items-center justify-content-center'>
-                                                    <img height={100} src={avatars[Number(player.avatar)]} alt="avatar-img" />
-                                                    <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player.name.split(' ')[0]}</div>
-                                                </div>
-                                            </div>
+                                        return(         
+                                            <div className='d-flex flex-column align-items-center justify-content-center'>
+                                                <img height={100} src={avatars[Number(player.avatar)]} alt="avatar-img" />
+                                                <div className='avatar-name th-bg-main text-white px-3 py-2 rounded-3 text-center'>{player.name.split(' ')[0]}</div>
+                                            </div>          
                                         )
                                         })
                                }
-                            </div>
                         </div>
                     </div>
                     {
