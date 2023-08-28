@@ -14,7 +14,7 @@ const Leaderboard = () => {
 
 
     const goBack = () =>{
-        window.location = window.origin + "/user";
+        window.location = window.origin + "/";
     }
 
     useEffect(()=>{

@@ -102,11 +102,11 @@ return (
                 </div>
             </div> 
             :
-            <div className='container d-flex flex-row justify-content-center mt-5'>
+            <div className='container lobby-content d-flex flex-row justify-content-center mt-5'>
                 <div className='d-flex flex-column align-items-center justify-content-center'>
                     <div className='border player-container p-3 rounded-3'>
                         <h3 className='w-100 text-end'>Players : {player_count} / 8</h3>
-                        <div className='player-list p-3 d-flex flex-row align-items-center justify-content-start'>
+                        <div className='player-list p-3 d-flex flex-row align-items-center column-gap-5 justify-content-start'>
                                {
                                     room_info.players.map((player,index)=>{
                                         return(         
@@ -126,7 +126,7 @@ return (
                             false
                     }
                 </div>
-                <div className='d-flex flex-column ms-4'>
+                <div className='d-flex flex-column ms-4 chat-container'>
                     <div className="card border text-center chatbox-container">
                         <div className="card-header th-bg-main text-white">
                             Messages
