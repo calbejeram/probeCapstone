@@ -86,7 +86,7 @@ const UserDashboard = () => {
                             <img src="https://img.freepik.com/free-vector/hand-drawn-web-developers_23-2148819604.jpg?w=996&t=st=1692953226~exp=1692953826~hmac=6c964fd820b0a896379598dcfe5d0ce615aaae65a6a044226e1e4836699ce260" className="card-img-top" alt="..."/>
                             <div className="card-body">
                                 <h5 className="card-title fw-medium">Javascript quiz</h5>
-                                <p className="card-text">10 questions, all about javascript and its fundamentals</p>
+                                <p className="card-text">all about javascript and its fundamentals</p>
                                 <div role='button' onClick={createRoom} className="text-white th-bg-main px-3 py-2 text-center rounded-3">Create Room</div>
                             </div>
                         </div>   
