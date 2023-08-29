@@ -88,7 +88,13 @@ const sample_questions =
             question: "What is the purpose of the '===' operator in JavaScript?",
             choices: ['Assignment', 'Equality comparison', 'Logical AND', 'String concatenation'],
             answer: 'Equality comparison'
+        },
+        {
+            question: "",
+            choices: [],
+            answer: ''
         }
+
     ]
 
 

@@ -9,7 +9,7 @@ const socket = io('http://localhost:5000')
 
 const MainGame = () => {
 
-    const [counter, setCounter] = useState(15);
+    const [counter, setCounter] = useState(10);
     const [correct, setCorrect] = useState(false);
     const [current_question,setCurrentQuestion] = useState(1)
     const [player_score, setPlayerScore] = useState(0);
@@ -67,7 +67,7 @@ const MainGame = () => {
         })
         
         setCurrentQuestion(current_question + 1)
-        setCounter(15);
+        setCounter(10);
     };
 
     const showScore = () =>{
