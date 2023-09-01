@@ -44,7 +44,7 @@ const UserDashboard = () => {
                     </div>
                     <div className="user-container d-flex align-items-center justify-content-center th-bg-main text-white rounded-3">
                         <i className="user-icon bi bi-person-circle"></i>
-                        <h3 className='dashboard-username fw-bold ms-3 m-0'>Jeram Calbe</h3>
+                        <h3 className='dashboard-username fw-bold ms-3 m-0'>You</h3>
                     </div>
                     <div className='nav-list mt-5'>
                         <ul className='d-flex flex-column'>

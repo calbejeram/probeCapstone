@@ -14,7 +14,6 @@ import UserDashboard from './pages/UserDashboard';
 import Register from "./pages/Register";
 import MainGame from "./pages/MainGame";
 import Leaderboard from "./pages/Leaderboard";
-import Start from "./pages/Start";
 
 
 function App() {
@@ -22,8 +21,7 @@ function App() {
    <>
       <Routes>
         <Route path="/lobby" element={<Lobby />} />
-        {/* <Route path="/" element={<UserDashboard />} /> */}
-        <Route path="/" element={<Start />} />
+        <Route path="/" element={<UserDashboard />} />
         <Route path="/guest" element={<Register />} />
         <Route path="/game" element={<MainGame />} />
         <Route path="/leaderBoard" element={<Leaderboard />} />
